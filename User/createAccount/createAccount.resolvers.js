@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
-import client from "../client";
+import client from "../../client";
 
 export default {
-    Mutation: {
+    Mutation:{
         createAccount: async (_,args) => {
             const {
                 name,
@@ -31,10 +31,8 @@ export default {
                     });
                 }
             }catch(e){
-                console.log(e);
+               return e;
             }
-            
-
         }
-    },
-};
+    }
+}

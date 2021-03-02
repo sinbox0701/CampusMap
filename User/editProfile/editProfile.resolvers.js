@@ -1,0 +1,42 @@
+import client from "../../client";
+import bcrypt from "bcrypt";
+import { protectedResolver } from "../User.utils";
+
+export default {
+    Mutation:{
+        editProfile: protectedResolver(
+            async (_,args,{loggedInUser}) => {
+                const {
+                    name,
+                    password
+                } = args;
+                protectResolver(loggedInUser);
+                let hashedPassword = null;
+                if(password){
+                    hashedPassword = await bcrypt.hash(password,10);
+                }
+               
+                const updatedUser = await client.user.update({
+                    where:{
+                        id:loggedInUser.id
+                    },
+                    data:{
+                        name,
+                        ...(hashedPassword && {password:hashedPassword})
+                    }
+                });
+                console.log(updatedUser.id);
+                if(updatedUser.id){
+                    return{
+                        ok:true
+                    }
+                }else{
+                    return{
+                        ok:false,
+                        error:"프로필 업데이트 실패"
+                    }
+                }
+            }
+        )
+    }
+}
