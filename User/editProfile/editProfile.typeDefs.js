@@ -10,6 +10,7 @@ export default gql`
         editProfile(
             name: String
             password: String
+            major: String
         ):EditProfileResult!
     }
 `;

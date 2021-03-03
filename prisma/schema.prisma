@@ -15,6 +15,7 @@ model User {
   name String
   studentId String @unique
   password String
+  major String
   idCard String
   verified Boolean @default(false)
   createdAt DateTime @default(now())

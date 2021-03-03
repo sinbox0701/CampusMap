@@ -11,7 +11,8 @@ export default gql`
             name: String!
             studentId: String!
             password: String!
-            idCard: String!
+            major: String!
+            idCard: Upload!
         ): createAccountResult!
     }
 `;

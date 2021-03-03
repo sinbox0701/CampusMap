@@ -8,7 +8,8 @@ export default {
             async (_,args,{loggedInUser}) => {
                 const {
                     name,
-                    password
+                    password,
+                    major
                 } = args;
                 protectResolver(loggedInUser);
                 let hashedPassword = null;
@@ -22,10 +23,11 @@ export default {
                     },
                     data:{
                         name,
+                        major,
                         ...(hashedPassword && {password:hashedPassword})
                     }
                 });
-                console.log(updatedUser.id);
+                
                 if(updatedUser.id){
                     return{
                         ok:true
