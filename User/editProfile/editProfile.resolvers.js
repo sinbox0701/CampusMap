@@ -11,7 +11,6 @@ export default {
                     password,
                     major
                 } = args;
-                protectResolver(loggedInUser);
                 let hashedPassword = null;
                 if(password){
                     hashedPassword = await bcrypt.hash(password,10);

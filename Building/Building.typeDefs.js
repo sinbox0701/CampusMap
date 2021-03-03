@@ -1,0 +1,22 @@
+import {gql} from "apollo-server";
+
+export default gql`
+    type Building {
+        id: Int!
+        name: String!
+        lat: Float!
+        lng: Float!
+        floors: [Floor]
+        createdAt: String!
+        updatedAt: String! 
+    }
+    type Floor {
+        id: Int!
+        name: String!
+        Image: Upload
+        building: Building!
+        buildingId: Int!
+        createdAt: String!
+        updatedAt: String!
+    }
+`;

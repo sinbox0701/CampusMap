@@ -18,6 +18,7 @@ model User {
   major String
   idCard String
   verified Boolean @default(false)
+  isManaged Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -27,15 +28,17 @@ model Building {
   name String
   lat Float
   lng Float
+  floors Floor[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
 }
 
 model Floor {
   id Int @id @default(autoincrement())
-  name Int
-  Image String
+  name String
+  Image String?
+  building Building @relation(fields: [buildingId], references:[id])
+  buildingId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

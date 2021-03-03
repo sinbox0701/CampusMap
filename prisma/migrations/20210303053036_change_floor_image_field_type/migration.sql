@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Floor" ALTER COLUMN "Image" DROP NOT NULL;
