@@ -4,8 +4,8 @@ export default gql`
     type Building {
         id: Int!
         name: String!
-        lat: Float!
-        lng: Float!
+        lat: String!
+        lng: String!
         floors: [Floor]
         createdAt: String!
         updatedAt: String! 

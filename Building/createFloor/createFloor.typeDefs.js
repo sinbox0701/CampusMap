@@ -1,16 +1,16 @@
 import { gql } from "apollo-server";
 
 export default gql`
-    type createBuildingResult{
+    type createFloorResult{
         ok:Boolean!
         error: String
     }
 
     type Mutation{
-        createBuilding(
+        createFloor(
             name: String!
-            lat: String!
-            lng: String!
-        ): createBuildingResult!
+            Image: Upload
+            buildingName: String!
+        ): createFloorResult!
     }
 `;

@@ -17,7 +17,6 @@ export default {
                                 name
                             }
                         });
-                        console.log(exists);
                         if(exists){
                             return {
                                 ok:false,
@@ -29,7 +28,7 @@ export default {
                                 data:{
                                     name,
                                     lat,
-                                    lng
+                                    lng,
                                 }
                             });
                             if(newBuilding.id){
