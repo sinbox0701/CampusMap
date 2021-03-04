@@ -11,8 +11,6 @@ export default gql`
             name: String
             lat: String
             lng: String
-            floorName: String
-            Image: Upload
         ):updateBuildingResult!
     }
 `;
