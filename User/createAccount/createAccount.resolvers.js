@@ -1,6 +1,6 @@
-import {createWriteStream} from "fs";
 import bcrypt from "bcrypt";
 import client from "../../client";
+import { uploadPhotos } from "../../utils";
 
 export default {
     Mutation:{
@@ -19,19 +19,13 @@ export default {
                       studentId
                     }
                 });
-                /// ---- AWS 연동 후 삭제 예정 ----
-                let idCardUrl = null;
-                const {filename, createReadStream} = await idCard;
-                const idCardFile = `${studentId}-${Date.now()}-${filename}`;
-                const ReadStream = createReadStream();
-                const WriteStream = createWriteStream(process.cwd()+"/uploads/"+idCardFile);
-                ReadStream.pipe(WriteStream);
-                idCardUrl = `http://localhost/4000/static/${idCardFile}`;
-                /// ---- AWS 연동 후 삭제 예정 ----
                 if(exists){
                     throw new Error("이미 존재하는 학번입니다.");
                 }
                 else{
+                    let idCardUrl = null;
+                    idCardUrl = await uploadPhotos(idCard,studentId,"User");
+                    
                     const hashedPassword = await bcrypt.hash(password,10);
 
                     const newUser = await client.user.create({

@@ -1,6 +1,6 @@
 import client from "../../client";
 import { protectedResolver } from "../../User/User.utils";
-import {createWriteStream} from "fs";
+import { uploadPhotos } from "../../utils";
 
 export default {
     Mutation:{
@@ -13,18 +13,11 @@ export default {
                 } = args;
                 try{
                     if(loggedInUser.isManaged){
-                        /// ---- AWS 연동 후 삭제 예정 ----
                         let imageUrl = null;
-                        if(Image){ 
-                            const {filename, createReadStream} = await Image;
-                            const imageFile = `${name}-${Date.now()}-${filename}`;
-                            const ReadStream = createReadStream();
-                            const WriteStream = createWriteStream(process.cwd()+"/uploads/"+imageFile);
-                            ReadStream.pipe(WriteStream);
-                            imageUrl = `http://localhost/4000/static/${imageFile}`;
+                        if(Image){
+                            imageUrl = await uploadPhotos(Image,name,"Floor");
+                            
                         }
-                        /// ---- AWS 연동 후 삭제 예정 ----
-
                         const newFloor = await client.floor.update({
                             where:{
                                 id
