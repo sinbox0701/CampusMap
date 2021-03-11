@@ -6,8 +6,10 @@ export default gql`
         name: String!
         studentId: String!
         password: String!
+        major: String!
         idCard: String!
-        verified: Boolean! 
+        verified: Boolean!
+        isManaged: Boolean! 
         createdAt: String! 
         updatedAt: String! 
     }    
