@@ -13,7 +13,7 @@ export default gql`
     type Floor {
         id: Int!
         name: String!
-        Image: Upload
+        Image: String
         building: Building!
         buildingId: Int!
         createdAt: String!
