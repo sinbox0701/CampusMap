@@ -20,7 +20,10 @@ export default {
                     }
                 });
                 if(exists){
-                    throw new Error("이미 존재하는 학번입니다.");
+                    return {
+                        ok:false,
+                        error:"이미 존재하는 학번입니다."   
+                    }
                 }
                 else{
                     let idCardUrl = null;
