@@ -13,7 +13,7 @@ export const uploadPhotos = async (file,studentId,folderName) => {
     const fileName = `${folderName}/${studentId}-${Date.now()}-${filename}`;
     const {Location} = await new AWS.S3().upload({
         Body:ReadStream,
-        Bucket:"campus-map",
+        Bucket: process.env.S3_BUCKET_NAME,
         Key:fileName,
         ACL: "public-read"
     }).promise();
