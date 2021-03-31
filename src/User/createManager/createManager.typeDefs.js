@@ -12,7 +12,6 @@ export default gql`
             studentId: String!
             password: String!
             major: String!
-            idCard: Upload
             isManaged: Boolean
             verified: Boolean
         ): createAccountResult!
