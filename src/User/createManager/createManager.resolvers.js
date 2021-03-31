@@ -27,6 +27,8 @@ export default {
                     }
                 }
                 else{
+                    const hashedPassword = await bcrypt.hash(password,10);
+                    
                     const newUser = await client.user.create({
                         data:{
                             name,
