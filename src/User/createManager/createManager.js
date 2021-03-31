@@ -39,7 +39,7 @@ export default {
                             studentId,
                             password:hashedPassword,
                             major,
-                            idCard:null,
+                            idCard:"default",
                             isManaged,
                             verified
                         }
