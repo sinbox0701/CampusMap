@@ -4,7 +4,6 @@ import logger from "morgan";
 import {ApolloServer} from "apollo-server-express";
 import {typeDefs,resolvers} from "./schema";
 import {getUser} from "./User/User.utils";
-import logfmt, { log } from "logfmt";
 
 const PORT = process.env.PORT;
 
@@ -22,7 +21,6 @@ const apollo = new ApolloServer({
 
 const app = express();
 app.use(logger("tiny"));
-app.user(logfmt.requestLogger({immediate: true}, logfmt.commonFormatter))
 app.use("/static",express.static("uploads"));
 apollo.applyMiddleware({app});
 app.listen({port:PORT}, () => {
