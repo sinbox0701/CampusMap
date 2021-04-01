@@ -4,7 +4,8 @@ AWS.config.update({
     credentials:{
         accessKeyId: process.env.AWS_KEY,
         secretAccessKey: process.env.AWS_SECRET_KEY
-    }
+    },
+    region:"ap-northeast-2"
 });
 
 export const uploadPhotos = async (file,studentId,folderName) => {
