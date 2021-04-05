@@ -10,12 +10,8 @@ export default {
                     studentId
                 } = args;
                if(loggedInUser.isManaged){
-                   const deleteUser = await client.user.findUnique({where:{
-                       studentId
-                   }});
                    await client.user.delete({where:{
-                       studentId,
-                       id:deleteUser.id
+                       studentId
                    }});
                    return{
                         ok:true
